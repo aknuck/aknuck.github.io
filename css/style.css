@@ -1,4 +1,8 @@
 
+:focus {
+	outline: none;
+}
+
 html,body {
 	overflow: hidden;
 	position: relative;
@@ -17,6 +21,25 @@ html,body {
 	text-align: center;
 	font-size: 10vw;
 	margin: 25px 0;
+}
+
+#score-title {
+	color: #eee2d7;
+}
+
+#score-wrapper {
+	background-color: #cdc1b4;
+	width: 25%;
+	max-width: 200px;
+	border-radius: 5px;
+	margin-left: 7%;
+	margin-bottom: 15px;
+	text-align: center;
+	padding: 4px 0;
+}
+
+#score {
+	color: white;
 }
 
 #game-container {

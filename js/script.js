@@ -1,7 +1,8 @@
 
-board = [];
-boardTiles = [];
-totalTiles = 0;
+var board = [];
+var boardTiles = [];
+var totalTiles = 0;
+var score = 0;
 
 
 (function () {
@@ -81,6 +82,25 @@ totalTiles = 0;
  
 })();
 
+function addTile(){
+	var addToTile = Math.floor(Math.random() * ((16-totalTiles) - 1) + 1);
+	//console.log(addToTile);
+	var count = 0;
+	for (var i=0; i<4; i++){
+		for (var j=0; j<4; j++){
+			if (board[i][j] == 0){
+				count ++;
+				//console.log(count);
+				if (count == addToTile){
+					board[i][j] = 2;
+					$('#tile-container').append('<div class="r'+(j+1)+' c'+(i+1)+' game-tile tile2">2</div>');
+					boardTiles[i][j] = $('.r'+(j+1)+'.c'+(i+1));
+				}
+			}
+		}
+	}
+}
+
 function prepareBoard(){
 	for (var i=0; i<4; i++){
 		board.push([]);
@@ -90,15 +110,9 @@ function prepareBoard(){
 			boardTiles[i].push(null);
 		}
 	}
-	board[1][0] = 2;
-	boardTiles[1][0] = $('.r1.c2');
-	board[1][1] = 2;
-	boardTiles[1][1] = $('.r2.c2');
-	board[1][2] = 2;
-	boardTiles[1][2] = $('.r3.c2');
-	board[1][3] = 2;
-	boardTiles[1][3] = $('.r4.c2');
-	totalTiles = 4;
+	addTile();
+	addTile();
+	$('#score').html(score);
 }
 
 function increaseRow(tile){
@@ -175,52 +189,64 @@ function doubleVal(tile){
 			tile.removeClass('tile2');
 			tile.addClass('tile4');
 			tile.html('4');
+			score += 4;
 		}
 		else if (tile.hasClass('tile4')){
 			tile.removeClass('tile4');
 			tile.addClass('tile8');
 			tile.html('8');
+			score += 8;
 		}
 		else if (tile.hasClass('tile8')){
 			tile.removeClass('tile8');
 			tile.addClass('tile16');
 			tile.html('16');
+			score += 16;
 		}
 		else if (tile.hasClass('tile16')){
 			tile.removeClass('tile16');
 			tile.addClass('tile32');
 			tile.html('32');
+			score += 32;
 		}
 		else if (tile.hasClass('tile32')){
 			tile.removeClass('tile32');
 			tile.addClass('tile64');
 			tile.html('64');
+			score += 64;
 		}
 		else if (tile.hasClass('tile64')){
 			tile.removeClass('tile64');
 			tile.addClass('tile128');
 			tile.html('128');
+			score += 128;
 		}
 		else if (tile.hasClass('tile128')){
 			tile.removeClass('tile128');
 			tile.addClass('tile256');
 			tile.html('256');
+			score += 256;
 		}
 		else if (tile.hasClass('tile256')){
 			tile.removeClass('tile256');
 			tile.addClass('tile512');
 			tile.html('512');
+			score += 512;
 		}
 		else if (tile.hasClass('tile512')){
 			tile.removeClass('tile512');
 			tile.addClass('tile1024');
 			tile.html('1024');
+			score += 1024;
 		}
 		else if (tile.hasClass('tile1024')){
 			tile.removeClass('tile1024');
 			tile.addClass('tile2048');
 			tile.html('2048');
+			score += 2048;
+			win();
 		}
+		$('#score').html(score);
 	}
 }
 
@@ -452,24 +478,15 @@ function moveRight(){
 	return moved;
 }
 
-function addTile(){
-	var addToTile = Math.floor(Math.random() * ((16-totalTiles) - 1) + 1);
-	//console.log(addToTile);
-	var count = 0;
-	for (var i=0; i<4; i++){
-		for (var j=0; j<4; j++){
-			if (board[i][j] == 0){
-				count ++;
-				//console.log(count);
-				if (count == addToTile){
-					board[i][j] = 2;
-					$('#tile-container').append('<div class="r'+(j+1)+' c'+(i+1)+' game-tile tile2">2</div>');
-					boardTiles[i][j] = $('.r'+(j+1)+'.c'+(i+1));
-				}
-			}
-		}
-	}
+function win(){
+
 }
+
+function lose(){
+
+}
+
+$(document).delegate(".ui-content", "scrollstart", false);
 
 $(document).ready(function(){
 	prepareBoard();
