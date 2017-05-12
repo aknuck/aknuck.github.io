@@ -3,8 +3,10 @@
 	outline: none;
 }
 
-.ui-loader {
+.ui-loader, .ui-loader-default {
 	display: none;
+	position: absolute;
+	top: 0;
 }
 
 html,body {
