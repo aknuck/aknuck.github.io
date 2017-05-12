@@ -2,11 +2,177 @@
 html,body {
 	overflow: hidden;
 	position: relative;
+	background-color: #faf8ef;
+	font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+	font-weight: bold;
+	margin: 0;
 }
 
 #main {
-	width: 95%;
-	margin: 0 auto;
 	height: 300px;
-	background-color: lightgray;
+}
+
+#title {
+	width: 100%;
+	text-align: center;
+	font-size: 10vw;
+	margin: 25px 0;
+}
+
+#game-container {
+	border-radius: 10px;
+	background-color: #bbada0;
+	width: 85vw;
+	margin: 0 auto;
+	height: 85vw;
+	padding: 4px;
+	/*max-width: 600px;*/
+}
+
+#background-container {
+	padding: 0.5vw;
+}
+
+.background-tile {
+	background-color: #cdc1b4;
+	width: 18vw;
+	height: 18vw;
+	/*max-width: 127px;
+	max-height: 127px;*/
+	display: inline-block;
+	margin: 1vw;
+	border-radius: 5px;
+}
+
+#tile-container {
+	padding: 0.5vw;
+	height: 100%;
+	margin-top: -100%;
+	padding-top: 0;
+}
+
+.game-tile {
+	width: 18vw;
+	height: 18vw;
+	line-height: 18vw;
+	text-align: center;
+	font-size: 24px;
+	font-weight: bold;
+	margin: 1vw;
+	border-radius: 5px;
+	z-index: 999;
+	position: absolute;
+	-webkit-transition: all 100ms ease-in-out;
+    transition: all 100ms ease-in-out;
+}
+
+/* --- positioning --- */
+
+.c1 {
+	margin-left: 1vw;
+}
+
+.c2 {
+	margin-left: 22vw;
+}
+
+.c3 {
+	margin-left: 43vw;
+}
+
+.c4 {
+	margin-left: 64vw;
+}
+
+.r1 {
+	margin-top: 2vw;
+}
+
+.r2 {
+	margin-top: 23vw;
+}
+
+.r3 {
+	margin-top: 44vw;
+}
+
+.r4 {
+	margin-top: 65vw;
+}
+
+/* -- colors --- */
+
+table {
+	padding: 1vw;
+	margin-top: 2vw;
+	margin-left: 1vw;
+}
+
+td {
+	padding: 1vw;
+	width: 18vw;
+	height: 18vw;
+}
+
+.tile {
+	color: #f9f6f2;
+    background: #3c3a32;
+    position: absolute;
+    -webkit-transition: all 100ms ease-in-out;
+    transition: all 100ms ease-in-out;
+}
+
+.tile2 {
+	color: #776e65;
+	background-color: #eee4da;
+}
+
+.tile4 {
+	color: #776e65;
+	background-color: #ede0c8;
+}
+
+.tile8 {
+	color: #f9f6f2;
+	background-color: #f2b179;
+}
+
+.tile16 {
+	color: #f9f6f2;
+	background-color: #f59563;
+}
+
+.tile32 {
+	color: #f9f6f2;
+	background-color: #f67c5f;
+}
+
+.tile64 {
+	color: #f9f6f2;
+	background-color: #f65e3b;
+}
+
+.tile128 {
+	color: #f9f6f2;
+	background-color: #edcf72;
+}
+
+.tile256 {
+	color: #f9f6f2;
+	background-color: #edcc61;
+}
+
+.tile512 {
+	color: #f9f6f2;
+	background-color: #edc850;
+}
+
+.tile1024 {
+	color: #f9f6f2;
+	background-color: #edc53f;
+}
+
+.tile2048 {
+	color: #f9f6f2;
+	background-color: #edc22e;
 }
