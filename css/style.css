@@ -133,35 +133,35 @@ html,body {
 /* --- positioning --- */
 
 .c1 {
-	margin-left: 1vw;
+	margin-left: 2%;
 }
 
 .c2 {
-	margin-left: 22vw;
+	margin-left: 22%;
 }
 
 .c3 {
-	margin-left: 43vw;
+	margin-left: 42%;
 }
 
 .c4 {
-	margin-left: 64vw;
+	margin-left: 63%;
 }
 
 .r1 {
-	margin-top: 2vw;
+	margin-top: 1%;
 }
 
 .r2 {
-	margin-top: 23vw;
+	margin-top: 22%;
 }
 
 .r3 {
-	margin-top: 44vw;
+	margin-top: 42%;
 }
 
 .r4 {
-	margin-top: 65vw;
+	margin-top: 63%;
 }
 
 /* -- colors --- */
