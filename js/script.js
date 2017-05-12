@@ -91,6 +91,8 @@ function prepareBoard(){
 	}
 	board[1][2] = 2;
 	boardTiles[1][2] = $('.r3.c2');
+	board[1][3] = 2;
+	boardTiles[1][3] = $('.r4.c2');
 }
 
 function increaseRow(tile){
@@ -166,42 +168,52 @@ function doubleVal(tile){
 		if (tile.hasClass('tile2')){
 			tile.removeClass('tile2');
 			tile.addClass('tile4');
+			tile.html('4');
 		}
 		else if (tile.hasClass('tile4')){
 			tile.removeClass('tile4');
 			tile.addClass('tile8');
+			tile.html('8');
 		}
 		else if (tile.hasClass('tile8')){
 			tile.removeClass('tile8');
 			tile.addClass('tile16');
+			tile.html('16');
 		}
 		else if (tile.hasClass('tile16')){
 			tile.removeClass('tile16');
 			tile.addClass('tile32');
+			tile.html('32');
 		}
 		else if (tile.hasClass('tile32')){
 			tile.removeClass('tile32');
 			tile.addClass('tile64');
+			tile.html('64');
 		}
 		else if (tile.hasClass('tile64')){
 			tile.removeClass('tile64');
 			tile.addClass('tile128');
+			tile.html('128');
 		}
 		else if (tile.hasClass('tile128')){
 			tile.removeClass('tile128');
 			tile.addClass('tile256');
+			tile.html('256');
 		}
 		else if (tile.hasClass('tile256')){
 			tile.removeClass('tile256');
 			tile.addClass('tile512');
+			tile.html('512');
 		}
 		else if (tile.hasClass('tile512')){
 			tile.removeClass('tile512');
 			tile.addClass('tile1024');
+			tile.html('1024');
 		}
 		else if (tile.hasClass('tile1024')){
 			tile.removeClass('tile1024');
 			tile.addClass('tile2048');
+			tile.html('2048');
 		}
 	}
 }
@@ -219,7 +231,7 @@ function moveUp(){
 			}
 			else {
 
-				if (board[i][j] == savedTile){
+				if (board[i][j] == board[i][savedTile]){
 					doubleVal(boardTiles[i][savedTile]);
 					boardTiles[i][j].removeClass('r2');
 					boardTiles[i][j].removeClass('r3');
@@ -239,7 +251,7 @@ function moveUp(){
 					boardTiles[i][j].addClass('r'+(savedZero+1));
 					boardTiles[i][savedZero] = boardTiles[i][j];
 					boardTiles[i][j] = null;
-					savedTile = -1;
+					savedTile = savedZero;
 					savedZero += 1;
 				}
 				else {
