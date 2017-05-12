@@ -76,7 +76,6 @@
 })();
 
 $(document).ready(function(){
-	document.body.addEventListener('touchmove', function(e){ e.preventDefault(); });
 	$(function(){
 		$('html').on('swipeleft', function(){
 			alert('left');
