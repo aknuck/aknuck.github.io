@@ -486,9 +486,22 @@ function lose(){
 
 }
 
+var touchScroll = function( event ) {
+    event.preventDefault();
+};
+
 $(document).delegate(".ui-content", "scrollstart", false);
 
 $(document).ready(function(){
+	$('html').click(function(){
+		$(this).bind('touchmove', touchScroll);
+	});
+	$('body').click(function(){
+		$(this).bind('touchmove', touchScroll);
+	});
+	$('#game-container').click(function(){
+		$(this).bind('touchmove', touchScroll);
+	});
 	prepareBoard();
 	$(function(){
 		$(document).keyup(function(e){
