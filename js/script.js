@@ -85,8 +85,17 @@ $(document).ready(function(){
 	    alert("swipeup..");
 	});*/
 	$(function(){
-		$('#main').on('swipeleft', function(){
+		$('html').on('swipeleft', function(){
 			alert('left');
+		});
+		$('html').on('swiperight', function(){
+			alert('right');
+		});
+		$('html').on('swipeup', function(){
+			alert('up');
+		});
+		$('html').on('swipedown', function(){
+			alert('down');
 		});
 	});
 });
