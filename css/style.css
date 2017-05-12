@@ -16,6 +16,7 @@ html,body {
 	font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
 	font-weight: bold;
 	margin: 0;
+	color: #776e65;
 }
 
 #main {
@@ -29,11 +30,15 @@ html,body {
 	margin: 25px 0;
 }
 
-#score-title {
+#name {
+	font-size: 12px;
+}
+
+#score-title, #best-title {
 	color: #eee2d7;
 }
 
-#score-wrapper {
+#score-wrapper, #best-wrapper, #new-wrapper {
 	background-color: #cdc1b4;
 	width: 25%;
 	max-width: 200px;
@@ -42,39 +47,69 @@ html,body {
 	margin-bottom: 15px;
 	text-align: center;
 	padding: 4px 0;
+	display: inline-block;
 }
 
-#score {
+#score, #best {
 	color: white;
 }
 
+#best-wrapper {
+	margin-left: 35%;
+	float: right;
+	margin-right: 7%;
+}
+
+#new-wrapper {
+	background-color: #8f7a66;
+	color: white;
+	cursor: pointer;
+	padding: 10px;
+	margin-top: 15px;
+	float: right;
+	margin-right: 7%;
+}
+
 #game-container {
-	border-radius: 10px;
+	/*border-radius: 10px;
 	background-color: #bbada0;
 	width: 85vw;
 	margin: 0 auto;
 	height: 85vw;
-	padding: 4px;
+	padding: 4px;*/
+	border-radius: 10px;
+	background-color: #bbada0;
+	width: 55vmin;
+	margin: 0 auto;
+	height: 55vmin;
+	max-width: 600px;
+	max-height: 600px;
+	min-width: 316px;
+	min-height: 316px;
 	/*max-width: 600px;*/
 }
 
 #background-container {
-	padding: 0.5vw;
+	padding: 2%;
 }
 
 .background-tile {
 	background-color: #cdc1b4;
-	width: 18vw;
-	height: 18vw;
+	/*width: 18vw;
+	height: 18vw;*/
+	width: 21.5%;
+	height: 21.5%;
 	/*max-width: 127px;
 	max-height: 127px;*/
 	display: inline-block;
-	margin: 1vw;
+	/*margin: 1vw;*/
+	margin: 1%;
 	border-radius: 5px;
 }
 
 #tile-container {
-	padding: 0.5vw;
+	/*padding: 0.5vw;*/
+	padding: 0.5%;
 	height: 100%;
 	margin-top: -100%;
 	padding-top: 0;
