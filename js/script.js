@@ -1,6 +1,7 @@
 
 board = [];
 boardTiles = [];
+totalTiles = 0;
 
 
 (function () {
@@ -97,6 +98,7 @@ function prepareBoard(){
 	boardTiles[1][2] = $('.r3.c2');
 	board[1][3] = 2;
 	boardTiles[1][3] = $('.r4.c2');
+	totalTiles = 4;
 }
 
 function increaseRow(tile){
@@ -436,20 +438,43 @@ function moveRight(){
 	}
 }
 
+function addTile(){
+	var addToTile = Math.floor(Math.random() * ((16-totalTiles) - 1) + 1);
+	console.log(addToTile);
+	var count = 0;
+	for (var i=0; i<4; i++){
+		for (var j=0; j<4; j++){
+			if (board[i][j] == 0){
+				count ++;
+				console.log(count);
+				if (count == addToTile){
+					board[i][j] = 2;
+					$('#tile-container').append('<div class="r'+(j+1)+' c'+(i+1)+' game-tile tile2">2</div>');
+					boardTiles[i][j] = $('.r'+(j+1)+'.c'+(i+1));
+				}
+			}
+		}
+	}
+}
+
 $(document).ready(function(){
 	prepareBoard();
 	$(function(){
 		$('html').on('swipeleft', function(){
 			moveLeft();
+			addTile();
 		});
 		$('html').on('swiperight', function(){
 			moveRight();
+			addTile();
 		});
 		$('html').on('swipeup', function(){
 			moveUp();
+			addTile();
 		});
 		$('html').on('swipedown', function(){
 			moveDown();
+			addTile();
 		});
 	});
 });
