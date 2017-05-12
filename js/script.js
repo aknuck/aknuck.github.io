@@ -76,8 +76,8 @@
 })();
 
 $(document).ready(function(){
-	document.body.addEventListener('touchmove', function(e){ e.preventDefault(); });
-	alert("ready");
+	/*document.body.addEventListener('touchmove', function(e){ e.preventDefault(); });*/
+	alert("ready1");
 	$(document).on('swipedown', '.content', function () {
 	    alert("swipedown..");
 	});
