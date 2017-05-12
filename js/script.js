@@ -1,4 +1,4 @@
-(function () {
+/*(function () {
 // initializes touch and scroll events
     var supportTouch = $.support.touch,
         scrollEvent = "touchmove scroll",
@@ -73,16 +73,21 @@
         };
     });
  
-})();
+})();*/
 
 $(document).ready(function(){
-	/*document.body.addEventListener('touchmove', function(e){ e.preventDefault(); });*/
-	alert("ready1");
+	document.body.addEventListener('touchmove', function(e){ e.preventDefault(); });
+	/*alert("ready");
 	$(document).on('swipedown', '.content', function () {
 	    alert("swipedown..");
 	});
 	$(document).on('swipeup', '.content', function () {
 	    alert("swipeup..");
+	});*/
+	$(function(){
+		$('#main').on('swipeleft', function(){
+			alert('left');
+		});
 	});
 });
 
