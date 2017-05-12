@@ -76,14 +76,7 @@
 })();
 
 $(document).ready(function(){
-	/*document.body.addEventListener('touchmove', function(e){ e.preventDefault(); });*/
-	/*alert("ready");
-	$(document).on('swipedown', '.content', function () {
-	    alert("swipedown..");
-	});
-	$(document).on('swipeup', '.content', function () {
-	    alert("swipeup..");
-	});*/
+	document.body.addEventListener('touchmove', function(e){ e.preventDefault(); });
 	$(function(){
 		$('html').on('swipeleft', function(){
 			alert('left');
