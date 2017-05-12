@@ -225,6 +225,7 @@ function doubleVal(tile){
 }
 
 function moveUp(){
+	var moved = false;
 	for (var i=0; i<4; i++){
 		savedTile = -1;
 		savedZero = -1;
@@ -250,6 +251,7 @@ function moveUp(){
 					boardTiles[i][j] = null;
 					savedZero = savedTile + 1;
 					savedTile = -1;
+					moved = true;
 					
 				}
 				else if(savedZero != -1){
@@ -266,6 +268,7 @@ function moveUp(){
 					boardTiles[i][j] = null;
 					savedTile = savedZero;
 					savedZero += 1;
+					moved = true;
 				}
 				else {
 					//console.log("neither ["+i+"]["+j+"]: "+board[i][j]);
@@ -275,9 +278,11 @@ function moveUp(){
 			}
 		}
 	}
+	return moved;
 }
 
 function moveDown(){
+	var moved = false;
 	for (var i=0; i<4; i++){
 		savedTile = -1;
 		savedZero = -1;
@@ -303,6 +308,7 @@ function moveDown(){
 					boardTiles[i][j] = null;
 					savedZero = savedTile - 1;
 					savedTile = -1;
+					moved = true;
 					
 				}
 				else if(savedZero != -1){
@@ -319,6 +325,7 @@ function moveDown(){
 					boardTiles[i][j] = null;
 					savedTile = savedZero;
 					savedZero -= 1;
+					moved = true;
 				}
 				else {
 					//console.log("neither ["+i+"]["+j+"]: "+board[i][j]);
@@ -328,9 +335,11 @@ function moveDown(){
 			}
 		}
 	}
+	return moved;
 }
 
 function moveLeft(){
+	var moved = false;
 	for (var j=0; j<4; j++){
 		savedTile = -1;
 		savedZero = -1;
@@ -357,7 +366,7 @@ function moveLeft(){
 					boardTiles[i][j] = null;
 					savedZero = savedTile + 1;
 					savedTile = -1;
-					
+					moved = true;
 				}
 				else if(savedZero != -1){
 					//console.log("zero ["+i+"]["+j+"]: "+board[i][j]);
@@ -373,6 +382,7 @@ function moveLeft(){
 					boardTiles[i][j] = null;
 					savedTile = savedZero;
 					savedZero += 1;
+					moved = true;
 				}
 				else {
 					//console.log("neither ["+i+"]["+j+"]: "+board[i][j]);
@@ -382,9 +392,11 @@ function moveLeft(){
 			}
 		}
 	}
+	return moved;
 }
 
 function moveRight(){
+	var moved = false;
 	for (var j=0; j<4; j++){
 		savedTile = -1;
 		savedZero = -1;
@@ -411,7 +423,7 @@ function moveRight(){
 					boardTiles[i][j] = null;
 					savedZero = savedTile - 1;
 					savedTile = -1;
-					
+					moved = true;
 				}
 				else if(savedZero != -1){
 					//console.log("zero ["+i+"]["+j+"]: "+board[i][j]);
@@ -427,6 +439,7 @@ function moveRight(){
 					boardTiles[i][j] = null;
 					savedTile = savedZero;
 					savedZero -= 1;
+					moved = true;
 				}
 				else {
 					//console.log("neither ["+i+"]["+j+"]: "+board[i][j]);
@@ -436,17 +449,18 @@ function moveRight(){
 			}
 		}
 	}
+	return moved;
 }
 
 function addTile(){
 	var addToTile = Math.floor(Math.random() * ((16-totalTiles) - 1) + 1);
-	console.log(addToTile);
+	//console.log(addToTile);
 	var count = 0;
 	for (var i=0; i<4; i++){
 		for (var j=0; j<4; j++){
 			if (board[i][j] == 0){
 				count ++;
-				console.log(count);
+				//console.log(count);
 				if (count == addToTile){
 					board[i][j] = 2;
 					$('#tile-container').append('<div class="r'+(j+1)+' c'+(i+1)+' game-tile tile2">2</div>');
@@ -461,20 +475,16 @@ $(document).ready(function(){
 	prepareBoard();
 	$(function(){
 		$('html').on('swipeleft', function(){
-			moveLeft();
-			addTile();
+			if (moveLeft()) addTile();
 		});
 		$('html').on('swiperight', function(){
-			moveRight();
-			addTile();
+			if (moveRight()) addTile();
 		});
 		$('html').on('swipeup', function(){
-			moveUp();
-			addTile();
+			if (moveUp()) addTile();
 		});
 		$('html').on('swipedown', function(){
-			moveDown();
-			addTile();
+			if (moveDown()) addTile();
 		});
 	});
 });
