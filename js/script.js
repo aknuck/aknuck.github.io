@@ -474,6 +474,20 @@ function addTile(){
 $(document).ready(function(){
 	prepareBoard();
 	$(function(){
+		$(document).keyup(function(e){
+			if (e.which == 38){
+				if (moveUp()) addTile();
+			}
+			else if (e.which == 40){
+				if (moveDown()) addTile();
+			}
+			else if (e.which == 39){
+				if (moveRight()) addTile();
+			}
+			else if (e.which == 37){
+				if (moveLeft()) addTile();
+			}
+		});
 		$('html').on('swipeleft', function(){
 			if (moveLeft()) addTile();
 		});
