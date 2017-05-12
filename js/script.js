@@ -1,4 +1,4 @@
-/*(function () {
+(function () {
 // initializes touch and scroll events
     var supportTouch = $.support.touch,
         scrollEvent = "touchmove scroll",
@@ -73,7 +73,7 @@
         };
     });
  
-})();*/
+})();
 
 $(document).ready(function(){
 	/*document.body.addEventListener('touchmove', function(e){ e.preventDefault(); });*/
