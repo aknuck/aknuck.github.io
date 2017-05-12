@@ -77,7 +77,7 @@
 
 $(document).ready(function(){
 	document.body.addEventListener('touchmove', function(e){ e.preventDefault(); });
-	console.log("ready");
+	alert("ready");
 	$(document).on('swipedown', '.content', function () {
 	    alert("swipedown..");
 	});
