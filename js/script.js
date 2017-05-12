@@ -490,9 +490,12 @@ var touchScroll = function( event ) {
     event.preventDefault();
 };
 
-$(document).delegate(".ui-content", "scrollstart", false);
 
 $(document).ready(function(){
+	$(document).delegate(".ui-content", "scrollstart", false);
+	$('html, body').on('touchstart touchmove', function(e){ 
+	    e.preventDefault(); 
+	});
 	$('html').click(function(){
 		$(this).bind('touchmove', touchScroll);
 	});
