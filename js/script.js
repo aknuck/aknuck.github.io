@@ -89,6 +89,10 @@ function prepareBoard(){
 			boardTiles[i].push(null);
 		}
 	}
+	board[1][0] = 2;
+	boardTiles[1][0] = $('.r1.c2');
+	board[1][1] = 2;
+	boardTiles[1][1] = $('.r2.c2');
 	board[1][2] = 2;
 	boardTiles[1][2] = $('.r3.c2');
 	board[1][3] = 2;
@@ -219,11 +223,12 @@ function doubleVal(tile){
 }
 
 function moveUp(){
-	savedTile = -1;
-	savedZero = -1;
 	for (var i=0; i<4; i++){
+		savedTile = -1;
+		savedZero = -1;
+		//console.log('--------------');
 		for (var j=0; j<4; j++){
-			console.log("cur "+board[i][j]);
+			//console.log("Start ["+i+"]["+j+"]: "+board[i][j]);
 			if (board[i][j] == 0){
 				if (savedZero == -1){
 					savedZero = j;
@@ -231,20 +236,26 @@ function moveUp(){
 			}
 			else {
 
-				if (board[i][j] == board[i][savedTile]){
+				if (savedTile != -1 && board[i][j] == board[i][savedTile]){
+					//console.log("saved ["+i+"]["+j+"]: "+board[i][j]);
 					doubleVal(boardTiles[i][savedTile]);
+					board[i][savedTile] *= 2;
+					board[i][j] = 0;
 					boardTiles[i][j].removeClass('r2');
 					boardTiles[i][j].removeClass('r3');
 					boardTiles[i][j].removeClass('r4');
-					boardTiles[i][j].addClass('r'+savedTile).delay(100).remove();
+					boardTiles[i][j].addClass('r'+(savedTile+1)).delay(100).remove();
 					boardTiles[i][j] = null;
+					savedZero = savedTile + 1;
 					savedTile = -1;
-					savedZero += 1;
+					
 				}
 				else if(savedZero != -1){
+					//console.log("zero ["+i+"]["+j+"]: "+board[i][j]);
 					board[i][savedZero] = board[i][j];
-					console.log(i);
-					console.log(j);
+					board[i][j] = 0;
+					//console.log(i);
+					//console.log(j);
 					boardTiles[i][j].removeClass('r2');
 					boardTiles[i][j].removeClass('r3');
 					boardTiles[i][j].removeClass('r4');
@@ -255,22 +266,172 @@ function moveUp(){
 					savedZero += 1;
 				}
 				else {
+					//console.log("neither ["+i+"]["+j+"]: "+board[i][j]);
 					savedTile = j;
 					savedZero = -1;
 				}
 			}
-			/*	board[i][j] = board[i][j+1];
-				board[i][j+1] = 0;
-				boardTiles[i][j] = boardTiles[i][j+1];
-				increaseRow(boardTiles[i][j+1]);
-			}
-			else if (board[i][j] == board[i][j+1]){
+		}
+	}
+}
 
-				board[i][j] = board[i][j+1]*2;
-				board[i][j+1] = 0;
-				doubleVal(boardTiles[i][j]);
-				increaseRow(boardTiles[i][j+1]);
-			}*/
+function moveDown(){
+	for (var i=0; i<4; i++){
+		savedTile = -1;
+		savedZero = -1;
+		//console.log('--------------');
+		for (var j=3; j>=0; j--){
+			//console.log("Start ["+i+"]["+j+"]: "+board[i][j]);
+			if (board[i][j] == 0){
+				if (savedZero == -1){
+					savedZero = j;
+				}
+			}
+			else {
+
+				if (board[i][j] == board[i][savedTile]){
+					//console.log("saved ["+i+"]["+j+"]: "+board[i][j]);
+					doubleVal(boardTiles[i][savedTile]);
+					board[i][savedTile] *= 2;
+					board[i][j] = 0;
+					boardTiles[i][j].removeClass('r1');
+					boardTiles[i][j].removeClass('r2');
+					boardTiles[i][j].removeClass('r3');
+					boardTiles[i][j].addClass('r'+(savedTile+1)).delay(100).remove();
+					boardTiles[i][j] = null;
+					savedZero = savedTile - 1;
+					savedTile = -1;
+					
+				}
+				else if(savedZero != -1){
+					//console.log("zero ["+i+"]["+j+"]: "+board[i][j]);
+					board[i][savedZero] = board[i][j];
+					board[i][j] = 0;
+					//console.log(i);
+					//console.log(j);
+					boardTiles[i][j].removeClass('r1');
+					boardTiles[i][j].removeClass('r2');
+					boardTiles[i][j].removeClass('r3');
+					boardTiles[i][j].addClass('r'+(savedZero+1));
+					boardTiles[i][savedZero] = boardTiles[i][j];
+					boardTiles[i][j] = null;
+					savedTile = savedZero;
+					savedZero -= 1;
+				}
+				else {
+					//console.log("neither ["+i+"]["+j+"]: "+board[i][j]);
+					savedTile = j;
+					savedZero = -1;
+				}
+			}
+		}
+	}
+}
+
+function moveLeft(){
+	for (var j=0; j<4; j++){
+		savedTile = -1;
+		savedZero = -1;
+		//console.log('--------------');
+		for (var i=0; i<4; i++){
+			//console.log("Start ["+i+"]["+j+"]: "+board[i][j]);
+			if (board[i][j] == 0){
+				//console.log("savingZero ["+i+"]["+j+"]: "+board[i][j]);
+				if (savedZero == -1){
+					savedZero = i;
+					//console.log('savedZero is '+savedZero);
+				}
+			}
+			else {
+				if (savedTile != -1 && board[i][j] == board[savedTile][j]){
+					//console.log("saved ["+i+"]["+j+"]: "+board[i][j]);
+					doubleVal(boardTiles[savedTile][j]);
+					board[savedTile][j] *= 2;
+					board[i][j] = 0;
+					boardTiles[i][j].removeClass('c2');
+					boardTiles[i][j].removeClass('c3');
+					boardTiles[i][j].removeClass('c4');
+					boardTiles[i][j].addClass('c'+(savedTile+1)).delay(100).remove();
+					boardTiles[i][j] = null;
+					savedZero = savedTile + 1;
+					savedTile = -1;
+					
+				}
+				else if(savedZero != -1){
+					//console.log("zero ["+i+"]["+j+"]: "+board[i][j]);
+					board[savedZero][j] = board[i][j];
+					board[i][j] = 0;
+					//console.log(i);
+					//console.log(j);
+					boardTiles[i][j].removeClass('c2');
+					boardTiles[i][j].removeClass('c3');
+					boardTiles[i][j].removeClass('c4');
+					boardTiles[i][j].addClass('c'+(savedZero+1));
+					boardTiles[savedZero][j] = boardTiles[i][j];
+					boardTiles[i][j] = null;
+					savedTile = savedZero;
+					savedZero += 1;
+				}
+				else {
+					//console.log("neither ["+i+"]["+j+"]: "+board[i][j]);
+					savedTile = i;
+					savedZero = -1;
+				}
+			}
+		}
+	}
+}
+
+function moveRight(){
+	for (var j=0; j<4; j++){
+		savedTile = -1;
+		savedZero = -1;
+		//console.log('--------------');
+		for (var i=3; i>=0; i--){
+			//console.log("Start ["+i+"]["+j+"]: "+board[i][j]);
+			if (board[i][j] == 0){
+				//console.log("savingZero ["+i+"]["+j+"]: "+board[i][j]);
+				if (savedZero == -1){
+					savedZero = i;
+					//console.log('savedZero is '+savedZero);
+				}
+			}
+			else {
+				if (savedTile != -1 && board[i][j] == board[savedTile][j]){
+					//console.log("saved ["+i+"]["+j+"]: "+board[i][j]);
+					doubleVal(boardTiles[savedTile][j]);
+					board[savedTile][j] *= 2;
+					board[i][j] = 0;
+					boardTiles[i][j].removeClass('c1');
+					boardTiles[i][j].removeClass('c2');
+					boardTiles[i][j].removeClass('c3');
+					boardTiles[i][j].addClass('c'+(savedTile+1)).delay(100).remove();
+					boardTiles[i][j] = null;
+					savedZero = savedTile - 1;
+					savedTile = -1;
+					
+				}
+				else if(savedZero != -1){
+					//console.log("zero ["+i+"]["+j+"]: "+board[i][j]);
+					board[savedZero][j] = board[i][j];
+					board[i][j] = 0;
+					//console.log(i);
+					//console.log(j);
+					boardTiles[i][j].removeClass('c1');
+					boardTiles[i][j].removeClass('c2');
+					boardTiles[i][j].removeClass('c3');
+					boardTiles[i][j].addClass('c'+(savedZero+1));
+					boardTiles[savedZero][j] = boardTiles[i][j];
+					boardTiles[i][j] = null;
+					savedTile = savedZero;
+					savedZero -= 1;
+				}
+				else {
+					//console.log("neither ["+i+"]["+j+"]: "+board[i][j]);
+					savedTile = i;
+					savedZero = -1;
+				}
+			}
 		}
 	}
 }
@@ -279,16 +440,16 @@ $(document).ready(function(){
 	prepareBoard();
 	$(function(){
 		$('html').on('swipeleft', function(){
-			alert('left');
+			moveLeft();
 		});
 		$('html').on('swiperight', function(){
-			alert('right');
+			moveRight();
 		});
 		$('html').on('swipeup', function(){
 			moveUp();
 		});
 		$('html').on('swipedown', function(){
-			alert('down');
+			moveDown();
 		});
 	});
 });
