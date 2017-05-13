@@ -83,19 +83,23 @@ var highscore = 0;
 })();
 
 function addTile(){
-	var addToTile = Math.floor(Math.random() * ((16-totalTiles) - 1) + 1);
+	var addToTile = Math.floor(Math.random() * (16-totalTiles));
+	console.log("addToTile: "+addToTile);
+	console.log("totalTiles: "+totalTiles);
 	//console.log(addToTile);
 	var count = 0;
 	for (var i=0; i<4; i++){
 		for (var j=0; j<4; j++){
 			if (board[i][j] == 0){
-				count ++;
 				//console.log(count);
-				if (count == addToTile+1){
+				console.log("count: "+count);
+				if (count == addToTile){
 					board[i][j] = 2;
 					$('#tile-container').append('<div class="r'+(j+1)+' c'+(i+1)+' game-tile tile2">2</div>');
 					boardTiles[i][j] = $('.r'+(j+1)+'.c'+(i+1));
+					totalTiles ++;
 				}
+				count ++;
 			}
 		}
 	}
@@ -215,6 +219,7 @@ function moveUp(){
 					boardTiles[i][j].removeClass('r3');
 					boardTiles[i][j].removeClass('r4');
 					boardTiles[i][j].addClass('r'+(savedTile+1)).delay(100).remove();
+					totalTiles--;
 					boardTiles[i][j] = null;
 					savedZero = savedTile + 1;
 					savedTile = -1;
@@ -272,6 +277,7 @@ function moveDown(){
 					boardTiles[i][j].removeClass('r2');
 					boardTiles[i][j].removeClass('r3');
 					boardTiles[i][j].addClass('r'+(savedTile+1)).delay(100).remove();
+					totalTiles--;
 					boardTiles[i][j] = null;
 					savedZero = savedTile - 1;
 					savedTile = -1;
@@ -330,6 +336,7 @@ function moveLeft(){
 					boardTiles[i][j].removeClass('c3');
 					boardTiles[i][j].removeClass('c4');
 					boardTiles[i][j].addClass('c'+(savedTile+1)).delay(100).remove();
+					totalTiles--;
 					boardTiles[i][j] = null;
 					savedZero = savedTile + 1;
 					savedTile = -1;
@@ -387,6 +394,7 @@ function moveRight(){
 					boardTiles[i][j].removeClass('c2');
 					boardTiles[i][j].removeClass('c3');
 					boardTiles[i][j].addClass('c'+(savedTile+1)).delay(100).remove();
+					totalTiles--;
 					boardTiles[i][j] = null;
 					savedZero = savedTile - 1;
 					savedTile = -1;
