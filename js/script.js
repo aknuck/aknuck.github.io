@@ -444,9 +444,7 @@ function moveRight(){
 				}
 			}
 			else {
-				alert('there');
 				if (savedTile != -1 && board[i][j] == board[savedTile][j]){
-					alert('here');
 					//console.log("saved ["+i+"]["+j+"]: "+board[i][j]);
 					doubleVal(boardTiles[savedTile][j]);
 					board[savedTile][j] *= 2;
@@ -454,7 +452,6 @@ function moveRight(){
 					boardTiles[i][j].removeClass('c1');
 					boardTiles[i][j].removeClass('c2');
 					boardTiles[i][j].removeClass('c3');
-					alert(savedTile+1);
 					boardTiles[i][j].addClass('c'+(savedTile+1)).delay(100).remove();
 					boardTiles[i][j] = null;
 					savedZero = savedTile - 1;
