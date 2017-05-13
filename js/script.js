@@ -444,7 +444,9 @@ function moveRight(){
 				}
 			}
 			else {
+				alert('there');
 				if (savedTile != -1 && board[i][j] == board[savedTile][j]){
+					alert('here');
 					//console.log("saved ["+i+"]["+j+"]: "+board[i][j]);
 					doubleVal(boardTiles[savedTile][j]);
 					board[savedTile][j] *= 2;
@@ -541,6 +543,7 @@ $(document).ready(function(){
 			if (moveLeft()) addTile();
 		});
 		$('html').on('swiperight', function(){
+			alert('right');
 			if (moveRight()) addTile();
 		});
 		$('html').on('swipeup', function(){
