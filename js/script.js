@@ -495,7 +495,7 @@ function lose(){
 
 }
 
-$(document).delegate(".ui-content", "scrollstart", false);
+//$(document).delegate(".ui-content", "scrollstart", false);
 
 var touchScroll = function( event ) {
     event.preventDefault();
@@ -517,12 +517,12 @@ $(document).ready(function(){
 	$('html').click(function(){
 		$(this).bind('touchmove', touchScroll);
 	});
-	$('body').click(function(){
+	/*$('body').click(function(){
 		$(this).bind('touchmove', touchScroll);
 	});
 	$('#game-container').click(function(){
 		$(this).bind('touchmove', touchScroll);
-	});
+	});*/
 	prepareBoard();
 
 	$('#new-wrapper').click(function(){
