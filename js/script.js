@@ -477,16 +477,16 @@ $(document).ready(function(){
 			}
 		});
 		$('html').on('swipeleft', function(){
-			if (moveLeft()) addTile();
+			if (moveLeft()) {alert('tile');addTile();}
 		});
 		$('html').on('swiperight', function(){
-			if (moveRight()) addTile();
+			if (moveRight()) {alert('tile');addTile();}
 		});
 		$('html').on('swipeup', function(){
-			if (moveUp()) addTile();
+			if (moveUp()) {alert('tile');addTile();}
 		});
 		$('html').on('swipedown', function(){
-			if (moveDown()) addTile();
+			if (moveDown()) {alert('tile');addTile();}
 		});
 	});
 });
