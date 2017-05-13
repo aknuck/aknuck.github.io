@@ -1,13 +1,6 @@
-
 :focus {
 	outline: none;
 }
-
-/*.ui-loader, .ui-loader-default {
-	display: none;
-	position: absolute;
-	top: 0;
-}*/
 
 html,body {
 	overflow: hidden;
@@ -98,35 +91,35 @@ html,body {
 /* --- positioning --- */
 
 .c1 {
-	margin-left: 2%;
+	margin-left: 1vw;
 }
 
 .c2 {
-	margin-left: 22%;
+	margin-left: 22vw;
 }
 
 .c3 {
-	margin-left: 42%;
+	margin-left: 43vw;
 }
 
 .c4 {
-	margin-left: 63%;
+	margin-left: 64vw;
 }
 
 .r1 {
-	margin-top: 1%;
+	margin-top: 2vw;
 }
 
 .r2 {
-	margin-top: 22%;
+	margin-top: 23vw;
 }
 
 .r3 {
-	margin-top: 42%;
+	margin-top: 44vw;
 }
 
 .r4 {
-	margin-top: 63%;
+	margin-top: 65vw;
 }
 
 /* -- colors --- */

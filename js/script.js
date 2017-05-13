@@ -1,4 +1,3 @@
-
 var board = [];
 var boardTiles = [];
 var totalTiles = 0;
@@ -115,7 +114,7 @@ function prepareBoard(){
 	$('#score').html(score);
 }
 
-/*function increaseRow(tile){
+function increaseRow(tile){
 	if (tile != null){
 		if (tile.hasClass('r2')){
 			tile.removeClass('r2');
@@ -150,9 +149,7 @@ function decreaseRow(tile){
 }
 
 function increaseColumn(tile){
-	alert('1');
 	if (tile != null){
-		alert('2');
 		if (tile.hasClass('c2')){
 			tile.removeClass('c2');
 			tile.addClass('c1');
@@ -183,7 +180,7 @@ function decreaseColumn(tile){
 			tile.addClass('c3');
 		}
 	}
-}*/
+}
 
 function doubleVal(tile){
 	if (tile != null){
@@ -488,25 +485,9 @@ function lose(){
 
 }
 
-var touchScroll = function( event ) {
-    event.preventDefault();
-};
-
+$(document).delegate(".ui-content", "scrollstart", false);
 
 $(document).ready(function(){
-	$(document).delegate(".ui-content", "scrollstart", false);
-	$('html, body').on('touchstart touchmove', function(e){ 
-	    e.preventDefault(); 
-	});
-	$('html').click(function(){
-		$(this).bind('touchmove', touchScroll);
-	});
-	$('body').click(function(){
-		$(this).bind('touchmove', touchScroll);
-	});
-	$('#game-container').click(function(){
-		$(this).bind('touchmove', touchScroll);
-	});
 	prepareBoard();
 	$(function(){
 		$(document).keyup(function(e){
@@ -537,6 +518,3 @@ $(document).ready(function(){
 		});
 	});
 });
-
-
-
