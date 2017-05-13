@@ -497,9 +497,9 @@ function lose(){
 
 //$(document).delegate(".ui-content", "scrollstart", false);
 
-var touchScroll = function( event ) {
+/*var touchScroll = function( event ) {
     event.preventDefault();
-};
+};*/
 
 $(document).ready(function(){
 	if (localStorage.highscore){
