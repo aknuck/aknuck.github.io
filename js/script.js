@@ -3,6 +3,8 @@ var boardTiles = [];
 var totalTiles = 0;
 var score = 0;
 var highscore = 0;
+var showWin = false;
+var showLose = false;
 
 
 (function () {
@@ -84,15 +86,10 @@ var highscore = 0;
 
 function addTile(){
 	var addToTile = Math.floor(Math.random() * (16-totalTiles));
-	console.log("addToTile: "+addToTile);
-	console.log("totalTiles: "+totalTiles);
-	//console.log(addToTile);
 	var count = 0;
 	for (var i=0; i<4; i++){
 		for (var j=0; j<4; j++){
 			if (board[i][j] == 0){
-				//console.log(count);
-				console.log("count: "+count);
 				if (count == addToTile){
 					board[i][j] = 2;
 					$('#tile-container').append('<div class="r'+(j+1)+' c'+(i+1)+' game-tile tile2">2</div>');
@@ -200,9 +197,7 @@ function moveUp(){
 	for (var i=0; i<4; i++){
 		savedTile = -1;
 		savedZero = -1;
-		//console.log('--------------');
 		for (var j=0; j<4; j++){
-			//console.log("Start ["+i+"]["+j+"]: "+board[i][j]);
 			if (board[i][j] == 0){
 				if (savedZero == -1){
 					savedZero = j;
@@ -211,7 +206,6 @@ function moveUp(){
 			else {
 
 				if (savedTile != -1 && board[i][j] == board[i][savedTile]){
-					//console.log("saved ["+i+"]["+j+"]: "+board[i][j]);
 					doubleVal(boardTiles[i][savedTile]);
 					board[i][savedTile] *= 2;
 					board[i][j] = 0;
@@ -227,11 +221,8 @@ function moveUp(){
 					
 				}
 				else if(savedZero != -1){
-					//console.log("zero ["+i+"]["+j+"]: "+board[i][j]);
 					board[i][savedZero] = board[i][j];
 					board[i][j] = 0;
-					//console.log(i);
-					//console.log(j);
 					boardTiles[i][j].removeClass('r2');
 					boardTiles[i][j].removeClass('r3');
 					boardTiles[i][j].removeClass('r4');
@@ -243,7 +234,6 @@ function moveUp(){
 					moved = true;
 				}
 				else {
-					//console.log("neither ["+i+"]["+j+"]: "+board[i][j]);
 					savedTile = j;
 					savedZero = -1;
 				}
@@ -258,9 +248,7 @@ function moveDown(){
 	for (var i=0; i<4; i++){
 		savedTile = -1;
 		savedZero = -1;
-		//console.log('--------------');
 		for (var j=3; j>=0; j--){
-			//console.log("Start ["+i+"]["+j+"]: "+board[i][j]);
 			if (board[i][j] == 0){
 				if (savedZero == -1){
 					savedZero = j;
@@ -269,7 +257,6 @@ function moveDown(){
 			else {
 
 				if (board[i][j] == board[i][savedTile]){
-					//console.log("saved ["+i+"]["+j+"]: "+board[i][j]);
 					doubleVal(boardTiles[i][savedTile]);
 					board[i][savedTile] *= 2;
 					board[i][j] = 0;
@@ -285,11 +272,8 @@ function moveDown(){
 					
 				}
 				else if(savedZero != -1){
-					//console.log("zero ["+i+"]["+j+"]: "+board[i][j]);
 					board[i][savedZero] = board[i][j];
 					board[i][j] = 0;
-					//console.log(i);
-					//console.log(j);
 					boardTiles[i][j].removeClass('r1');
 					boardTiles[i][j].removeClass('r2');
 					boardTiles[i][j].removeClass('r3');
@@ -301,7 +285,6 @@ function moveDown(){
 					moved = true;
 				}
 				else {
-					//console.log("neither ["+i+"]["+j+"]: "+board[i][j]);
 					savedTile = j;
 					savedZero = -1;
 				}
@@ -316,19 +299,14 @@ function moveLeft(){
 	for (var j=0; j<4; j++){
 		savedTile = -1;
 		savedZero = -1;
-		//console.log('--------------');
 		for (var i=0; i<4; i++){
-			//console.log("Start ["+i+"]["+j+"]: "+board[i][j]);
 			if (board[i][j] == 0){
-				//console.log("savingZero ["+i+"]["+j+"]: "+board[i][j]);
 				if (savedZero == -1){
 					savedZero = i;
-					//console.log('savedZero is '+savedZero);
 				}
 			}
 			else {
 				if (savedTile != -1 && board[i][j] == board[savedTile][j]){
-					//console.log("saved ["+i+"]["+j+"]: "+board[i][j]);
 					doubleVal(boardTiles[savedTile][j]);
 					board[savedTile][j] *= 2;
 					board[i][j] = 0;
@@ -343,11 +321,8 @@ function moveLeft(){
 					moved = true;
 				}
 				else if(savedZero != -1){
-					//console.log("zero ["+i+"]["+j+"]: "+board[i][j]);
 					board[savedZero][j] = board[i][j];
 					board[i][j] = 0;
-					//console.log(i);
-					//console.log(j);
 					boardTiles[i][j].removeClass('c2');
 					boardTiles[i][j].removeClass('c3');
 					boardTiles[i][j].removeClass('c4');
@@ -359,7 +334,6 @@ function moveLeft(){
 					moved = true;
 				}
 				else {
-					//console.log("neither ["+i+"]["+j+"]: "+board[i][j]);
 					savedTile = i;
 					savedZero = -1;
 				}
@@ -374,19 +348,14 @@ function moveRight(){
 	for (var j=0; j<4; j++){
 		savedTile = -1;
 		savedZero = -1;
-		//console.log('--------------');
 		for (var i=3; i>=0; i--){
-			//console.log("Start ["+i+"]["+j+"]: "+board[i][j]);
 			if (board[i][j] == 0){
-				//console.log("savingZero ["+i+"]["+j+"]: "+board[i][j]);
 				if (savedZero == -1){
 					savedZero = i;
-					//console.log('savedZero is '+savedZero);
 				}
 			}
 			else {
 				if (savedTile != -1 && board[i][j] == board[savedTile][j]){
-					//console.log("saved ["+i+"]["+j+"]: "+board[i][j]);
 					doubleVal(boardTiles[savedTile][j]);
 					board[savedTile][j] *= 2;
 					board[i][j] = 0;
@@ -401,11 +370,8 @@ function moveRight(){
 					moved = true;
 				}
 				else if(savedZero != -1){
-					//console.log("zero ["+i+"]["+j+"]: "+board[i][j]);
 					board[savedZero][j] = board[i][j];
 					board[i][j] = 0;
-					//console.log(i);
-					//console.log(j);
 					boardTiles[i][j].removeClass('c1');
 					boardTiles[i][j].removeClass('c2');
 					boardTiles[i][j].removeClass('c3');
@@ -417,7 +383,6 @@ function moveRight(){
 					moved = true;
 				}
 				else {
-					//console.log("neither ["+i+"]["+j+"]: "+board[i][j]);
 					savedTile = i;
 					savedZero = -1;
 				}
@@ -427,19 +392,31 @@ function moveRight(){
 	return moved;
 }
 
-function win(){
+function checkLose() {
+	if (totalTiles == 16){
+		for (var i=0; i<4; i++){
+			for (var j=0; j<4; j++){
+				if (board[i][j] != 0 && ((j+1 <= 3 && board[i][j] == board[i][j+1]) || (i+1 <= 3 && board[i][j] == board[i+1][j]))){
+					return false;
+				}
+			}
+		}
+		console.log('lose');
+		lose();
+		return true;
+	}
+	return false;
+}
 
+function win(){
+	$('#win').show();
+	showWin = true;
 }
 
 function lose(){
-
+	$('#lose').show();
+	showLose = true;
 }
-
-//$(document).delegate(".ui-content", "scrollstart", false);
-
-/*var touchScroll = function( event ) {
-    event.preventDefault();
-};*/
 
 $(document).ready(function(){
 	if (localStorage.highscore){
@@ -450,50 +427,84 @@ $(document).ready(function(){
 		highscore = 0;
 		$('#best').html(0);
 	}
-	/*$(document).delegate(".ui-content", "scrollstart", false);*/
-	/*$('html, body').on('touchstart touchmove', function(e){ 
-	    e.preventDefault(); 
-	});*/
-	/*$('html').click(function(){
-		$(this).bind('touchmove', touchScroll);
-	});
-	$('body').click(function(){
-		$(this).bind('touchmove', touchScroll);
-	});
-	$('#game-container').click(function(){
-		$(this).bind('touchmove', touchScroll);
-	});*/
 	prepareBoard();
 
 	$('#new-wrapper').click(function(){
 		prepareBoard();
 	});
 
+	$('html').click(function(){
+		if (showWin){
+			$('#win').hide();
+			showWin = false;
+		}
+		if (showLose){
+			$('#lose').hide();
+			showLose = false;
+		}
+	});
+
 	$(function(){
 		$(document).keyup(function(e){
 			if (e.which == 38){
 				if (moveUp()) addTile();
+				checkLose();
 			}
 			else if (e.which == 40){
 				if (moveDown()) addTile();
+				checkLose();
 			}
 			else if (e.which == 39){
 				if (moveRight()) addTile();
+				checkLose();
 			}
 			else if (e.which == 37){
 				if (moveLeft()) addTile();
+				checkLose();
 			}
 		});
 		$('html').on('swipeleft', function(){
+			if (showWin){
+				$('#win').hide();
+				showWin = false;
+			}
+			if (showLose){
+				$('#lose').hide();
+				showLose = false;
+			}
 			if (moveLeft()) addTile();
 		});
 		$('html').on('swiperight', function(){
+			if (showWin){
+				$('#win').hide();
+				showWin = false;
+			}
+			if (showLose){
+				$('#lose').hide();
+				showLose = false;
+			}
 			if (moveRight()) addTile();
 		});
 		$('html').on('swipeup', function(){
+			if (showWin){
+				$('#win').hide();
+				showWin = false;
+			}
+			if (showLose){
+				$('#lose').hide();
+				showLose = false;
+			}
 			if (moveUp()) addTile();
 		});
 		$('html').on('swipedown', function(){
+			if (showWin){
+				$('#win').hide();
+				showWin = false;
+			}
+			if (showLose){
+				$('#lose').hide();
+				showLose = false;
+			}
 			if (moveDown()) addTile();
 		});
 	});

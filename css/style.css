@@ -89,7 +89,6 @@ html,body {
 	margin: 0 auto;
 	height: 85vw;
 	padding: 4px;
-	/*max-width: 600px;*/
 }
 
 #background-container {
@@ -100,8 +99,6 @@ html,body {
 	background-color: #cdc1b4;
 	width: 18vw;
 	height: 18vw;
-	/*max-width: 127px;
-	max-height: 127px;*/
 	display: inline-block;
 	margin: 1vw;
 	border-radius: 5px;
@@ -127,6 +124,32 @@ html,body {
 	position: absolute;
 	-webkit-transition: all 100ms ease-in-out;
     transition: all 100ms ease-in-out;
+}
+
+#win, #lose {
+	position: absolute;
+	margin: 0 auto;
+	margin-top: -25vmin;
+	margin-left: 25%;
+	display: none;
+	width: 50%;
+	height: 17vmin;
+	border-radius: 10px;
+	color: white;
+	background-color: #ead576;
+	text-align: center;
+	padding: 2vmin;
+	font-size: 7vmin;
+	z-index: 999;
+}
+
+#win-title, #lose-title {
+	line-height: 11vmin;
+}
+
+#win-text, #lose-text {
+	color: #faf8ef;
+	font-size: 4vmin;
 }
 
 /* --- positioning --- */
