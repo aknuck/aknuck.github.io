@@ -102,6 +102,11 @@ function addTile(){
 }
 
 function prepareBoard(){
+	$('#tile-container').html('');
+	score = 0;
+	$('#score').html(0);
+	board = [];
+	boardTiles = [];
 	for (var i=0; i<4; i++){
 		board.push([]);
 		boardTiles.push([]);
@@ -502,6 +507,11 @@ $(document).ready(function(){
 		$('#best').html(0);
 	}
 	prepareBoard();
+
+	$('#new-wrapper').click(function(){
+		prepareBoard();
+	});
+
 	$(function(){
 		$(document).keyup(function(e){
 			if (e.which == 38){
