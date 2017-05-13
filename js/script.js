@@ -247,7 +247,6 @@ function doubleVal(tile){
 			win();
 		}
 		if (score > highscore){
-			alert(score);
 			localStorage.highscore = score;
 			$('#best').html(score);
 		}
@@ -494,14 +493,11 @@ function lose(){
 $(document).delegate(".ui-content", "scrollstart", false);
 
 $(document).ready(function(){
-	alert('1');
 	if (localStorage.highscore){
-		alert('2');
 		$('#best').html(localStorage.highscore);
 		highscore = localStorage.highscore;
 	}
 	else{
-		alert('3');
 		highscore = 0;
 		$('#best').html(0);
 	}
