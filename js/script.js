@@ -527,7 +527,6 @@ $(document).ready(function(){
 			if (moveLeft()) addTile();
 		});
 		$('html').on('swiperight', function(){
-			alert('right');
 			if (moveRight()) addTile();
 		});
 		$('html').on('swipeup', function(){
