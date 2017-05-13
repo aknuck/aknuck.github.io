@@ -55,6 +55,22 @@ html,body {
 	color: white;
 }
 
+#new-wrapper {
+	width: 25%;
+	height: 30px;
+	line-height: 30px;
+	max-width: 200px;
+	border-radius: 5px;
+	float: right;
+	margin-right: 7%;
+	text-align: center;
+	padding: 4px 0;
+	margin-top: 15px;
+	background-color: #8f7a66;
+	color: white;
+	cursor: pointer;
+}
+
 #game-container {
 	border-radius: 10px;
 	background-color: #bbada0;
