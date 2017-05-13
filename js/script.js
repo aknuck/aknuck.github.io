@@ -511,9 +511,9 @@ $(document).ready(function(){
 		$('#best').html(0);
 	}
 	/*$(document).delegate(".ui-content", "scrollstart", false);*/
-	$('html, body').on('touchstart touchmove', function(e){ 
+	/*$('html, body').on('touchstart touchmove', function(e){ 
 	    e.preventDefault(); 
-	});
+	});*/
 	$('html').click(function(){
 		$(this).bind('touchmove', touchScroll);
 	});
