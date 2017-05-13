@@ -510,13 +510,13 @@ $(document).ready(function(){
 		highscore = 0;
 		$('#best').html(0);
 	}
-	$(document).delegate(".ui-content", "scrollstart", false);
+	/*$(document).delegate(".ui-content", "scrollstart", false);
 	$('html, body').on('touchstart touchmove', function(e){ 
 	    e.preventDefault(); 
 	});
 	$('html').click(function(){
 		$(this).bind('touchmove', touchScroll);
-	});
+	});*/
 	/*$('body').click(function(){
 		$(this).bind('touchmove', touchScroll);
 	});
