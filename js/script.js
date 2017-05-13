@@ -495,7 +495,7 @@ $(document).delegate(".ui-content", "scrollstart", false);
 
 $(document).ready(function(){
 	alert('1');
-	if (localStorage.highschore){
+	if (localStorage.highscore){
 		alert('2');
 		$('#best').html(localStorage.highscore);
 		highscore = localStorage.highscore;
