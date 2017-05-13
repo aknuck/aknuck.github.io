@@ -86,6 +86,7 @@ var showLose = false;
 
 function addTile(){
 	var addToTile = Math.floor(Math.random() * (16-totalTiles));
+	console.log('totalTiles');
 	var count = 0;
 	for (var i=0; i<4; i++){
 		for (var j=0; j<4; j++){
@@ -103,6 +104,9 @@ function addTile(){
 }
 
 function prepareBoard(){
+	console.log('prepare');
+	highscore = 0;
+	totalTiles = 0;
 	$('#tile-container').html('');
 	score = 0;
 	$('#score').html(0);
@@ -401,7 +405,6 @@ function checkLose() {
 				}
 			}
 		}
-		console.log('lose');
 		lose();
 		return true;
 	}
