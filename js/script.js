@@ -120,7 +120,7 @@ function prepareBoard(){
 	$('#score').html(score);
 }
 
-function increaseRow(tile){
+/*function increaseRow(tile){
 	if (tile != null){
 		if (tile.hasClass('r2')){
 			tile.removeClass('r2');
@@ -186,7 +186,7 @@ function decreaseColumn(tile){
 			tile.addClass('c3');
 		}
 	}
-}
+}*/
 
 function doubleVal(tile){
 	if (tile != null){

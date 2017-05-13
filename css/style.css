@@ -9,6 +9,7 @@ html,body {
 	font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
 	font-weight: bold;
 	margin: 0;
+	color: #776e65;
 }
 
 #main {
@@ -20,6 +21,10 @@ html,body {
 	text-align: center;
 	font-size: 10vw;
 	margin: 25px 0;
+}
+
+#name {
+	font-size: 12px;
 }
 
 #score-title {
