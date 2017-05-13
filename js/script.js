@@ -497,9 +497,9 @@ function lose(){
 
 //$(document).delegate(".ui-content", "scrollstart", false);
 
-/*var touchScroll = function( event ) {
+var touchScroll = function( event ) {
     event.preventDefault();
-};*/
+};
 
 $(document).ready(function(){
 	if (localStorage.highscore){
@@ -510,19 +510,19 @@ $(document).ready(function(){
 		highscore = 0;
 		$('#best').html(0);
 	}
-	/*$(document).delegate(".ui-content", "scrollstart", false);
+	/*$(document).delegate(".ui-content", "scrollstart", false);*/
 	$('html, body').on('touchstart touchmove', function(e){ 
 	    e.preventDefault(); 
 	});
 	$('html').click(function(){
 		$(this).bind('touchmove', touchScroll);
-	});*/
-	/*$('body').click(function(){
+	});
+	$('body').click(function(){
 		$(this).bind('touchmove', touchScroll);
 	});
 	$('#game-container').click(function(){
 		$(this).bind('touchmove', touchScroll);
-	});*/
+	});
 	prepareBoard();
 
 	$('#new-wrapper').click(function(){
