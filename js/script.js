@@ -116,7 +116,7 @@ function prepareBoard(){
 	$('#score').html(score);
 }
 
-function increaseRow(tile){
+/*function increaseRow(tile){
 	if (tile != null){
 		if (tile.hasClass('r2')){
 			tile.removeClass('r2');
@@ -151,7 +151,9 @@ function decreaseRow(tile){
 }
 
 function increaseColumn(tile){
+	alert('1');
 	if (tile != null){
+		alert('2');
 		if (tile.hasClass('c2')){
 			tile.removeClass('c2');
 			tile.addClass('c1');
@@ -182,7 +184,7 @@ function decreaseColumn(tile){
 			tile.addClass('c3');
 		}
 	}
-}
+}*/
 
 function doubleVal(tile){
 	if (tile != null){
@@ -450,6 +452,7 @@ function moveRight(){
 					boardTiles[i][j].removeClass('c1');
 					boardTiles[i][j].removeClass('c2');
 					boardTiles[i][j].removeClass('c3');
+					alert(savedTile+1);
 					boardTiles[i][j].addClass('c'+(savedTile+1)).delay(100).remove();
 					boardTiles[i][j] = null;
 					savedZero = savedTile - 1;
