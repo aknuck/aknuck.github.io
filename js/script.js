@@ -120,74 +120,6 @@ function prepareBoard(){
 	$('#score').html(score);
 }
 
-/*function increaseRow(tile){
-	if (tile != null){
-		if (tile.hasClass('r2')){
-			tile.removeClass('r2');
-			tile.addClass('r1');
-		}
-		else if (tile.hasClass('r3')){
-			tile.removeClass('r3');
-			tile.addClass('r2');
-		}
-		else if (tile.hasClass('r4')){
-			tile.removeClass('r4');
-			tile.addClass('r3');
-		}
-	}
-}
-
-function decreaseRow(tile){
-	if (tile != null){
-		if (tile.hasClass('r1')){
-			tile.removeClass('r1');
-			tile.addClass('r2');
-		}
-		else if (tile.hasClass('r2')){
-			tile.removeClass('r2');
-			tile.addClass('r3');
-		}
-		else if (tile.hasClass('r3')){
-			tile.removeClass('r3');
-			tile.addClass('r3');
-		}
-	}
-}
-
-function increaseColumn(tile){
-	if (tile != null){
-		if (tile.hasClass('c2')){
-			tile.removeClass('c2');
-			tile.addClass('c1');
-		}
-		else if (tile.hasClass('c3')){
-			tile.removeClass('c3');
-			tile.addClass('c2');
-		}
-		else if (tile.hasClass('c4')){
-			tile.removeClass('c4');
-			tile.addClass('c3');
-		}
-	}
-}
-
-function decreaseColumn(tile){
-	if (tile != null){
-		if (tile.hasClass('c1')){
-			tile.removeClass('c1');
-			tile.addClass('c2');
-		}
-		else if (tile.hasClass('c2')){
-			tile.removeClass('c2');
-			tile.addClass('c3');
-		}
-		else if (tile.hasClass('c3')){
-			tile.removeClass('c3');
-			tile.addClass('c3');
-		}
-	}
-}*/
-
 function doubleVal(tile){
 	if (tile != null){
 		if (tile.hasClass('tile2')){
@@ -511,9 +443,9 @@ $(document).ready(function(){
 		$('#best').html(0);
 	}
 	/*$(document).delegate(".ui-content", "scrollstart", false);*/
-	$('html, body').on('touchstart touchmove', function(e){ 
+	/*$('html, body').on('touchstart touchmove', function(e){ 
 	    e.preventDefault(); 
-	});
+	});*/
 	/*$('html').click(function(){
 		$(this).bind('touchmove', touchScroll);
 	});
