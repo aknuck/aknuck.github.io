@@ -247,6 +247,7 @@ function doubleVal(tile){
 			win();
 		}
 		if (score > highscore){
+			alert(score);
 			localStorage.highscore = score;
 			$('#best').html(score);
 		}
