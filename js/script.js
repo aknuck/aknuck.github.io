@@ -91,7 +91,7 @@ function addTile(){
 			if (board[i][j] == 0){
 				count ++;
 				//console.log(count);
-				if (count == addToTile){
+				if (count == addToTile+1){
 					board[i][j] = 2;
 					$('#tile-container').append('<div class="r'+(j+1)+' c'+(i+1)+' game-tile tile2">2</div>');
 					boardTiles[i][j] = $('.r'+(j+1)+'.c'+(i+1));
@@ -477,16 +477,16 @@ $(document).ready(function(){
 			}
 		});
 		$('html').on('swipeleft', function(){
-			if (moveLeft()) {alert('tile');addTile();}
+			if (moveLeft()) addTile();
 		});
 		$('html').on('swiperight', function(){
-			if (moveRight()) {alert('tile');addTile();}
+			if (moveRight()) addTile();
 		});
 		$('html').on('swipeup', function(){
-			if (moveUp()) {alert('tile');addTile();}
+			if (moveUp()) addTile();
 		});
 		$('html').on('swipedown', function(){
-			if (moveDown()) {alert('tile');addTile();}
+			if (moveDown()) addTile();
 		});
 	});
 });
