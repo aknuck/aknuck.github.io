@@ -2,6 +2,7 @@ var board = [];
 var boardTiles = [];
 var totalTiles = 0;
 var score = 0;
+var highscore = 0;
 
 
 (function () {
@@ -244,6 +245,10 @@ function doubleVal(tile){
 			tile.html('2048');
 			score += 2048;
 			win();
+		}
+		if (score > highscore){
+			localStorage.highscore = score;
+			$('#best').html(score);
 		}
 		$('#score').html(score);
 	}
@@ -488,6 +493,14 @@ function lose(){
 $(document).delegate(".ui-content", "scrollstart", false);
 
 $(document).ready(function(){
+	if (localStorage.highschore){
+		$('#best').html(localStorage.highscore);
+		highscore = localStorage.highscore;
+	}
+	else{
+		highscore = 0;
+		$('#best').html(0);
+	}
 	prepareBoard();
 	$(function(){
 		$(document).keyup(function(e){
