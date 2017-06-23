@@ -128,7 +128,7 @@ $(document).ready(function(){
 
     $('#search-button').click(function(){
         calculateDistances();
-        $("#search-bar-field").easyAutocomplete(autocompleteData);
+        $("#search-bar").easyAutocomplete(autocompleteData);
     });
     /*map.on('mousemove',function(e){
         console.log(e.lngLat);
