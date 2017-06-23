@@ -373,6 +373,6 @@ var autocompleteData = {
 	}
 }
 
-$("#search-bar-field").easyAutocomplete(options);
+
 
 

@@ -43,6 +43,7 @@ $(document).ready(function(){
 
     $('#search-button').click(function(){
         calculateDistances();
+        $("#search-bar-field").easyAutocomplete(autocompleteData);
     });
     /*map.on('mousemove',function(e){
         console.log(e.lngLat);
