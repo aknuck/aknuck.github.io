@@ -34,10 +34,12 @@ function addMarker(map,lat,lon){
                     "coordinates": [lon, lat]
                 },
                 "properties": {
-                    "title": "Mapbox DC",
-                    "marker-symbol": "default_marker"
+                    //"title": "Mapbox DC",
+                    "marker-color": "#ff00ff",
+                    "marker-symbol": "secondary_marker"
+                    //"marker-symbol": "default_marker"
                 }
-            }, {
+            },/* {
                 "type": "Feature",
                 "geometry": {
                     "type": "Point",
@@ -48,7 +50,7 @@ function addMarker(map,lat,lon){
                     "marker-color": "#ff00ff",
                     "marker-symbol": "secondary_marker"
                 }
-            }]
+            }*/]
         }
     });
 
