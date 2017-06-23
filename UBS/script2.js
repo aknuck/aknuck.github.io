@@ -41,8 +41,10 @@ $(document).ready(function(){
         hash: false
     });
 
-
-    map.on('mousemove',function(e){
-        console.log(e.lngLat);
+    $('#search-button').click(function(){
+        calculateDistances();
     });
+    /*map.on('mousemove',function(e){
+        console.log(e.lngLat);
+    });*/
 });
