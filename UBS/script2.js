@@ -6,6 +6,7 @@ function gotPos(position){
     console.log(position);
     lat = position.coords.latitude;
     lon = position.coords.longitude;
+    currentLocation = [lat,lon];
     map.removeLayer(myLocation);
     myLocation = L.marker([lat, lon]).addTo(map);
     console.log('position updated');
