@@ -118,6 +118,7 @@ $(document).ready(function(){
         navigator.geolocation.getCurrentPosition(function(position) {
             lat = position.coords.latitude;
             lon = position.coords.longitude;
+            var marker = L.marker([lat, lon]).addTo(map);
             addMarker(map,lat,lon);
             //myLocation = L.marker([lat, lon])//.addTo(map);
             //map.addLayer(myLocation);
