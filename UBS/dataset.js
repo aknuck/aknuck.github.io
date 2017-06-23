@@ -343,7 +343,7 @@ function distance(lat1, lon1, lat2, lon2, unit) {
 	if (unit=="N") { dist = dist * 0.8684 }
 	return dist/5280
 }
-}
+
 
 function calculateDistances() {
 	var lat = currentLocation['latitude'];

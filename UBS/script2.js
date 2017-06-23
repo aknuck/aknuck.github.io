@@ -1,5 +1,5 @@
 
-$(document).ready(){
+$(document).ready(function(){
     mapboxgl.accessToken = 'pk.eyJ1IjoiYWtudWNrIiwiYSI6ImNqNDk2aGhzNDB1MHkzM3FsNGl1ZGozZHEifQ.qBgXJJjDj12Axzefkw9Cdw';
     var mapStyle = {
         "version": 8,
@@ -45,4 +45,4 @@ $(document).ready(){
     map.on('mousemove',function(e){
         console.log(e.lngLat);
     });
-}
+});
