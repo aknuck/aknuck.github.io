@@ -1,0 +1,12 @@
+#search {
+	position: relative;
+	top: 0;
+	left: 0;
+	margin: 20px;
+}
+
+.distance {
+	color: gray;
+	font-style: italic;
+	font-size: 10px;
+}

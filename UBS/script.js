@@ -1,4 +1,6 @@
-var myLocation;
+var currentLocation = {}; //lon and lat
+var currentDestination = null;
+var myLocation; //map element
 var map;
 var options = { enableHighAccuracy: true, maximumAge: 100, timeout: 50000 };
 
@@ -21,8 +23,16 @@ function gotPos(position){
 	console.log(position);
 	lat = position.coords.latitude;
 	lon = position.coords.longitude;
+	currentLocation['latitude'] = lat;
+	currentLocation['longitude'] = lon;
 	map.removeLayer(myLocation);
-	myLocation = L.marker([lat, lon]).addTo(map);
+	//myLocation = L.marker([lat, lon]).addTo(map);
+	myLocation = L.circle([lat, lon], {
+	    color: 'blue',
+	    fillColor: 'blue',
+	    fillOpacity: 0.5,
+	    radius: 2
+	}).addTo(map);
 	console.log('position updated');
 }
 
@@ -34,6 +44,65 @@ function update_position(){
 	//var watchID = navigator.geolocation.watchPosition( gotPos, gotErr, options );
 	var watchID = navigator.geolocation.getCurrentPosition( gotPos, gotErr, options );
 	var timeout = setTimeout( function() { navigator.geolocation.clearWatch( watchID ); }, 5000 );
+}
+
+function distance(lat1, lon1, lat2, lon2, unit) {
+	/*console.log(lat1);
+	console.log(lon1);
+	console.log('----');*/
+	var radlat1 = Math.PI * lat1/180
+	var radlat2 = Math.PI * lat2/180
+	var theta = lon1-lon2
+	var radtheta = Math.PI * theta/180
+	var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+	dist = Math.acos(dist)
+	dist = dist * 180/Math.PI
+	dist = dist * 60 * 1.1515
+	if (unit=="K") { dist = dist * 1.609344 }
+	if (unit=="N") { dist = dist * 0.8684 }
+	//console.log(dist*5280);
+	return Math.round(dist*5280*10)/10;
+}
+
+
+function calculateDistances() {
+	var lat = currentLocation['latitude'];
+	var lon = currentLocation['longitude'];
+	for (key in dataSet){
+		dataSet[key]['distance'] = distance(dataSet[key]['latitude'],dataSet[key]['longitude'],lat,lon,'M');
+	}
+	for (element in dataSetList){
+		//console.log(element);
+		dataSetList[element]['distance'] = distance(dataSetList[element]['latitude'],dataSetList[element]['longitude'],lat,lon,'M');
+	}
+}
+
+function generateData(){
+	var autocompleteData = {
+		data: dataSetList,
+		getValue: "name",
+
+		template: {
+			type: "custom",
+			method: function(value, item) {
+				return value + '<span class="distance">  ' + item.distance + ' feet</span>';
+			}
+		},
+		list: {
+			match: {
+				enabled: true
+			},
+			onSelectItemEvent: function(){
+				var value = $("#search-bar").getSelectedItemData().key;
+				if (!(typeof myDestination === 'undefined' || !myDestination)){
+					map.removeLayer(myDestination);
+				}
+				myDestination = L.marker([dataSet[value]['latitude'], dataSet[value]['longitude']]).addTo(map);
+				//$("#data-holder").val(value).trigger("change");
+			}
+		}
+	}
+	return autocompleteData;
 }
 
 $(document).ready(function(){
@@ -70,9 +139,17 @@ $(document).ready(function(){
 			lat = position.coords.latitude;
 			console.log('3');
 			lon = position.coords.longitude;
+			currentLocation['latitude'] = lat;
+			currentLocation['longitude'] = lon;
 			console.log('4');
 			console.log(lat+','+lon);
-			myLocation = L.marker([lat, lon]).addTo(map);
+			//myLocation = L.marker([lat, lon]).addTo(map);
+			myLocation = L.circle([lat, lon], {
+			    color: 'blue',
+			    fillColor: 'blue',
+			    fillOpacity: 0.5,
+			    radius: 5
+			}).addTo(map);
 			console.log('5');
 			//map.addLayer(myLocation);
 			//myLocation.bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
@@ -82,4 +159,9 @@ $(document).ready(function(){
 		});
 	}
 	window.setInterval(update_position, 5000);
+
+	$('#search-button').click(function(){
+        calculateDistances();
+        $("#search-bar").easyAutocomplete(generateData());
+    });
 });
