@@ -127,4 +127,9 @@ $(document).ready(function(){
 		});
 	}
 	window.setInterval(update_position, 5000);
+
+	$('#search-button').click(function(){
+        calculateDistances();
+        $("#search-bar").easyAutocomplete(autocompleteData);
+    });
 });
