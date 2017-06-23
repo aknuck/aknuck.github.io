@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>ImageOverlay with georeferenced scanned map</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<link rel="stylesheet" type="text/css" href="easy-autocomplete.min.css">
+<link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
+<link rel="stylesheet" type="text/css" href="style2.css">
+<!--<link rel="stylesheet" type="text/css" href="js/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="js/bootstrap-grid.min.css">
+<link rel="stylesheet" type="text/css" href="js/bootstrap-reboot.min.css">-->
+<!--<link rel="stylesheet" type="text/css" href="component.css" />-->
+<script src="modernizr.custom.js"></script>
+<script src="jquery-3.2.1.min.js"></script>
+<script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
+<script src="dataset2.js"></script>
+<script src="script.js"></script>
+<script src="js/uisearch.js"></script>
+<script src="js/classie.js"></script>
+<!--<script src="js/bootstrap.min.js"></script>-->
+<script src="jquery.easy-autocomplete.min.js"></script>
+
+<style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; width:100%; }
+</style>
+</head>
+<body>
+<div id='map'></div>
+<!--<div id="search">
+<div id="search-button" style="height: 50px; width: 50px; background-color: red;"></div>
+<input id="search-bar"></input>
+</div>-->
+<div class="main clearfix">
+
+	<!-- Optional columns for small components -->
+	<div class="column">
+		<div id="sb-search" class="sb-search">
+			<form>
+				<input class="sb-search-input" placeholder="Search bathroom, conference room..." type="search" value="" name="search" id="search">
+				<input class="sb-search-submit" type="submit" value="">
+				<span class="sb-icon-search"></span>
+			</form>
+		</div>
+		<div class="results">
+
+		</div>
+	</div>
+</div>
+<div class="main clearfix">
+				<!-- Optional columns for small components -->
+			<div id="sb-floor" style="background-color: #D8D8D8; font-family: frutiger;">
+							<!--<input class="sb-search-input">-->
+				<span class="floor" style="background:#D8D8D8">2</span>
+			</div>
+
+		</div>
+<!--<img src="ubsMap.png" class="map"><p></p>-->
+<img src="logo.svg" id="logo">
+</body>
+</html>
