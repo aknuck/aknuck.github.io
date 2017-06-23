@@ -103,12 +103,16 @@ var mapStyle = {
 
 var map = new mapboxgl.Map({
     container: 'map',
-    maxZoom: 22,
+    maxZoom: 20,
     minZoom: 16,
     zoom: 16,
     center: [-74.023299, 40.7597645],
     style: mapStyle,
     hash: false
+});
+
+map.on('mousemove',function(e){
+    console.log(e.lngLat);
 });
 
 </script>
