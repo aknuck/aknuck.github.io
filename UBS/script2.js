@@ -16,7 +16,7 @@ function gotErr(){
 
 function update_position(){
     //var watchID = navigator.geolocation.watchPosition( gotPos, gotErr, options );
-    var watchID = navigator.geolocation.getCurrentPosition( gotPos, gotErr, options );
+    var watchID = navigator.geolocation.getCurrentPosition( gotPos, gotErr, { enableHighAccuracy: true, maximumAge: 100, timeout: 50000 } );
     var timeout = setTimeout( function() { navigator.geolocation.clearWatch( watchID ); }, 5000 );
 }
 
@@ -70,7 +70,7 @@ $(document).ready(function(){
         navigator.geolocation.getCurrentPosition(function(position) {
             lat = position.coords.latitude;
             lon = position.coords.longitude;
-            myLocation = L.marker([lat, lon]).addTo(map);
+            myLocation = marker([lat, lon]).addTo(map);
             //map.addLayer(myLocation);
             //myLocation.bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
             //.addTo(map);
