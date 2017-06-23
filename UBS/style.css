@@ -1,0 +1,27 @@
+
+#search-bar {
+	position: relative;
+	margin-top: 30px;
+	margin-bottom: 0;
+	width: 90%;
+	margin-left: 5%;
+	max-width: 600px;
+}
+
+#search-button {
+	height: 50px;
+	width: 50px;
+	float: right;
+	background-color: red;
+}
+
+#search-bar {
+	background-color: lightgray;
+}
+
+#results {
+	display: none;
+	background-color: lightgray;
+	height: 500px;
+	width: 100%;
+}
