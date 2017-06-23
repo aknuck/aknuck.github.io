@@ -17,11 +17,12 @@
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoiYWtudWNrIiwiYSI6ImNqNDk2aGhzNDB1MHkzM3FsNGl1ZGozZHEifQ.qBgXJJjDj12Axzefkw9Cdw';
 var mapStyle = {
+    "version": 1,
     "sources": {
-        "mapbox": {
+        /*"mapbox": {
             "type": "vector",
             "url": "mapbox://mapbox.mapbox-streets-v6"
-        },
+        },*/
         "overlay": {
             "type": "image",
             "url": "floor2rotated2.png",
@@ -104,8 +105,8 @@ var mapStyle = {
 var map = new mapboxgl.Map({
     container: 'map',
     maxZoom: 20,
-    minZoom: 17,
-    zoom: 18,
+    minZoom: 16,
+    zoom: 16,
     center: [-74.023299, 40.7597645],
     style: mapStyle,
     hash: false
