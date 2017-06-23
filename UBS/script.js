@@ -84,11 +84,15 @@ function generateData(){
 
 		template: {
 			type: "custom",
+			fields: {
+				description: "type"
+			},
 			method: function(value, item) {
 				return value + '<span class="distance">  ' + item.distance + ' feet</span>';
 			}
 		},
 		list: {
+			maxNumberOfElements: 10,
 			match: {
 				enabled: true
 			},
@@ -118,7 +122,8 @@ $(document).ready(function(){
 			[40.759117, -74.022496]]);
 
 	map = L.mapbox.map('map')//, 'mapbox.streets')
-		.fitBounds(imageBounds);
+		//.fitBounds(imageBounds);
+		.setView([40.7597645,-74.023299],20);
 
 	map.options.maxZoom = 22;
 	map.options.minZoom = 19;

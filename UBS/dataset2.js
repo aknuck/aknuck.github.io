@@ -206,7 +206,7 @@ var dataSet = {
 		"name": "Stairs",
 		"type": "stairs",
 		"longitude": -74.0238534,
-		"latitude": 40.7595202,
+		"latitude": 40.7597202,
 		"distance": 0
 	},
 	"stairs4": {
@@ -247,7 +247,7 @@ var dataSet = {
 	"pantry1": {
 		"name": "Pantry",
 		"type": "food",
-		"longitude": -74.0278931,
+		"longitude": -74.0228931,
 		"latitude": 40.7600062,
 		"distance": 0
 	},
@@ -614,7 +614,7 @@ var dataSetList = [
 	{
 		"name": "Pantry",
 		"type": "food",
-		"longitude": -74.0278931,
+		"longitude": -74.0228931,
 		"latitude": 40.7600062,
 		"distance": 0,
 		"key": "pantry1"
