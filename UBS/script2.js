@@ -1,5 +1,6 @@
 
 var currentLocation; //lon and lat
+var myLocation; //map element
 
 function gotPos(position){
     console.log(position);
@@ -70,7 +71,7 @@ $(document).ready(function(){
         navigator.geolocation.getCurrentPosition(function(position) {
             lat = position.coords.latitude;
             lon = position.coords.longitude;
-            myLocation = marker([lat, lon]).addTo(map);
+            myLocation = L.marker([lat, lon]).addTo(map);
             //map.addLayer(myLocation);
             //myLocation.bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
             //.addTo(map);
