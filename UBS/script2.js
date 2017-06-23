@@ -21,6 +21,50 @@ function update_position(){
     var timeout = setTimeout( function() { navigator.geolocation.clearWatch( watchID ); }, 5000 );
 }
 
+function addMarker(map,lat,lon){
+    map.addSource('markers', {
+        "type": "geojson",
+        "data": {
+            "type": "FeatureCollection",
+            "features": [{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [lon, lat]
+                },
+                "properties": {
+                    "title": "Mapbox DC",
+                    "marker-symbol": "default_marker"
+                }
+            }, {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-122.414, 37.776]
+                },
+                "properties": {
+                    "title": "Mapbox SF",
+                    "marker-color": "#ff00ff",
+                    "marker-symbol": "secondary_marker"
+                }
+            }]
+        }
+    });
+
+    map.addLayer({
+        "id": "markers",
+        "source": "markers",
+        "type": "symbol",
+        "layout": {
+            "icon-image": "{marker-symbol}",
+            "text-field": "{title}",
+            "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+            "text-offset": [0, 0.6],
+            "text-anchor": "top"
+        }
+    });
+}
+
 $(document).ready(function(){
 
     mapboxgl.accessToken = 'pk.eyJ1IjoiYWtudWNrIiwiYSI6ImNqNDk2aGhzNDB1MHkzM3FsNGl1ZGozZHEifQ.qBgXJJjDj12Axzefkw9Cdw';
@@ -71,8 +115,9 @@ $(document).ready(function(){
         navigator.geolocation.getCurrentPosition(function(position) {
             lat = position.coords.latitude;
             lon = position.coords.longitude;
-            myLocation = L.marker([lat, lon])//.addTo(map);
-            map.addLayer(myLocation);
+            addMarker(map,lat,lon);
+            //myLocation = L.marker([lat, lon])//.addTo(map);
+            //map.addLayer(myLocation);
             //myLocation.bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
             //.addTo(map);
             //map.removeLayer(myLocation);
