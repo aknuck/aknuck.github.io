@@ -5605,12 +5605,12 @@ ARjs.Profile.prototype.reset = function () {
 	}
 
 	this.contextParameters = {
-		cameraParametersUrl: THREEx.ArToolkitContext.baseURL + '../data/data/camera_para.dat',
+		cameraParametersUrl: THREEx.ArToolkitContext.baseURL + 'data/data/camera_para.dat',
 		detectionMode: 'mono',
 	}
 	this.defaultMarkerParameters = {
 		type : 'pattern',
-		patternUrl : THREEx.ArToolkitContext.baseURL + '../data/data/patt.hiro',
+		patternUrl : THREEx.ArToolkitContext.baseURL + 'data/data/patt.hiro',
 		changeMatrixMode: 'modelViewMatrix',
 	}
 	return this
