@@ -48,12 +48,15 @@
 	</div>
 </div>
 <div id="view-button-wrapper">
-	<button id="view-button" type="submit" formaction="ShortARTest.html">View</button>
+	<a href="ShortARTest.html"><button id="view-button">View</button></a>
+</div>
+
+</div>
 </div>
 <script>
-window.scrollTo(0,1)
+/mobile/i.test(navigator.userAgent) && !location.hash && setTimeout(function() {
+  window.scrollTo(0, 1);
+}, 1000);​
 </script>
-</div>
-</div>
 </body>
 </html>
